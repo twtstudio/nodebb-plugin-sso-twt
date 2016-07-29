@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-sso-twt",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "NodeBB TwT SSO",
   "main": "library.js",
   "repository": {
@@ -10,12 +10,7 @@
   "keywords": [
     "nodebb",
     "plugin",
-    "oauth",
-    "oauth2",
-    "sso",
-    "single sign on",
-    "login",
-    "registration"
+    "sso"
   ],
   "author": {
     "name": "Innpaul Zhang",
@@ -30,7 +25,6 @@
   "dependencies": {
     "base64-url": "^1.3.2",
     "passport-custom": "^1.0.5",
-    "passport-oauth": "~1.0.0",
     "request": "^2.74.0",
     "twt-sso": "^1.0.0"
   },

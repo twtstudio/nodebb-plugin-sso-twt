@@ -18,8 +18,6 @@
 
   if (!constants.id || !constants.key) {
     winston.error('[sso-twt] App ID and key required.')
-  } else if (!constants.userRoute) {
-    winston.error('[sso-twt] User Route required)')
   } else {
     configOk = true
   }

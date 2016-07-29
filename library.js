@@ -16,7 +16,7 @@
   var configOk = false
   var TwTSSO = {}
 
-  if (!constants.twt || !constants.twt.id || !constants.twt.key) {
+  if (!constants.id || !constants.key) {
     winston.error('[sso-twt] App ID and key required.')
   } else if (!constants.userRoute) {
     winston.error('[sso-twt] User Route required)')
@@ -26,12 +26,13 @@
 
   TwTSSO.getStrategy = function (strategies, callback) {
     if (configOk) {
+      var twtApi = new TwTApi(constants.id, constants.key, !!constants.https)
       passport.use('twt', new CustomStrategy(function (req, done) {
         if (!req.query || !req.query.token) {
-          return this.redirect(TwTApi.getLoginUrl(nconf.get('url') + '/auth/twt/callback'))
+          return this.redirect(twtApi.getLoginUrl(nconf.get('url') + '/auth/twt/callback'))
         }
 
-        TwTApi.getUserInfo(req.query.token, function (err, data) {
+        twtApi.getUserInfo(req.query.token, function (err, data) {
           if (err) return done(err)
           if (!data.status) return done(data.message)
 

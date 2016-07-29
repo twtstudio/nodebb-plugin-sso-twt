@@ -37,7 +37,8 @@
           TwTSSO.login({
             id: data.result.id,
             handle: data.result.twt_name,
-            email: data.result.email
+            email: data.result.email,
+            fullname: data.result.user_info.username
           }, function (err, user) {
             if (err) return done(err)
 
@@ -83,7 +84,8 @@
           if (!uid) {
             User.create({
               username: payload.handle,
-              email: payload.email
+              email: payload.email,
+              fullname: payload.fullname
             }, function (err, uid) {
               if (err) return callback(err)
               success(uid)

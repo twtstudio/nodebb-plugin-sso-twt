@@ -107,18 +107,18 @@
     })
   }
 
-  TwTSSO.deleteUserData = function (uid, callback) {
+  TwTSSO.deleteUserData = function (data, callback) {
     async.waterfall([
-      async.apply(User.getUserField, uid, 'twtId'),
+      async.apply(User.getUserField, data.uid, 'twtId'),
       function (TwTIdToDelete, next) {
         db.deleteObjectField('twtId:uid', TwTIdToDelete, next)
       }
     ], function (err) {
       if (err) {
-        winston.error('[sso-twt] Could not remove TwTId data for uid ' + uid + '. Error: ' + err)
+        winston.error('[sso-twt] Could not remove TwTId data for uid ' + data.uid + '. Error: ' + err)
         return callback(err)
       }
-      callback(null, uid)
+      callback(null, data)
     })
   }
 

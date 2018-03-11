@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-sso-twt",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "NodeBB TwT SSO",
   "main": "library.js",
   "repository": {
